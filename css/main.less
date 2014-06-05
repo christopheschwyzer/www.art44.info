@@ -1,0 +1,166 @@
+@import (less) "lesshat.less";
+
+@colorBrand: #f4803b;
+@colorFg: #333;
+@colorFgSubtle: lighten(@colorFg, 20);
+@colorBg: hsl(0, 0%, 97%);
+@colorLink: rgb(44, 135, 173);
+
+@fontDefault: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+@breakpointSmall: 600px;
+
+@fontSize: 1em;
+@fontSizeSmall: .8rem;
+@fontSizeTiny: .6rem;
+
+*, *:before, *:after {
+	.box-sizing(border-box);
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	font-family: @fontDefault;
+	font-size: 16px;
+	line-height: 1.5;
+	font-weight: 300;
+	background-color: @colorBg;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-size: 100%;
+	font-weight: 400;
+}
+
+a {
+	color: #2a7ae2;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #000;
+	text-decoration: underline;
+}
+
+a:visited {
+	color: #205caa;
+}
+
+strong {
+	font-weight: 400;
+}
+
+.wrap {
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+#header, #content, #footer {
+	text-align: center;
+}
+
+#header {
+	padding: 20px 0;
+
+	@media (min-width: @breakpointSmall) {
+		padding: 40px 0;
+	}
+
+	.logo {
+		position: relative;
+		display: inline-block;
+		width: 320px;
+		height: 160px;
+		background: url(/img/logo.svg) no-repeat;
+		background-size: contain;
+		text-align: left;
+		.transform(scale(.7));
+
+
+		@media(min-width: @breakpointSmall) {
+			.transform(scale(1));
+		}
+
+		.slogan {
+			position: absolute;
+			width: 200px;
+			left: 160px;
+			font-size: 16px;
+			color: @colorFgSubtle;
+
+			&.lang-fr {
+				top: 110px;
+			}
+
+			&.lang-de {
+				top: 130px;
+			}
+		}
+	}
+}
+
+#content {
+	background: white;
+	padding: 70px 0;
+
+	@media (min-width: @breakpointSmall) {
+		padding: 120px 0;
+	}
+
+	.wrap {
+		padding: 0 15px;
+	}
+
+	.address {
+		a {
+			color: @colorFg;
+			text-decoration: none;
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
+
+		.name {
+			@media (min-width: @breakpointSmall) {
+				font-size: 22px;
+			}
+
+			margin-bottom: 40px;
+		}
+
+		.phone, .email {
+			display: block;
+			font-size: 30px;
+			line-height: 1.65;
+
+			@media (min-width: @breakpointSmall) {
+				font-size: 5vw;
+			}
+
+			&:hover .glyphicon {
+				color: @colorLink;
+			}
+		}
+
+		.glyphicon {
+			margin-right: 12px;
+			font-size: 20px;
+		}
+	}
+}
+
+#footer {
+	padding: 15px 0 20px;
+
+	a {
+		color: @colorFgSubtle;
+	}
+
+	.copyright {
+		color: @colorFgSubtle;
+	}
+}
