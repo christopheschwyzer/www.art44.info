@@ -1,12 +1,14 @@
 @import (less) "lesshat.less";
 
-@colorBrand: #3FB4FF;
+@colorBrand: #f4803b;
 @colorFg: #333;
 @colorFgSubtle: lighten(@colorFg, 20);
-@colorBg: #fff;
+@colorBg: hsl(0, 0%, 97%);
 @colorLink: rgb(44, 135, 173);
 
-@fontDefault: 'Open Sans', sans-serif;
+@fontDefault: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+@breakpointSmall: 600px;
 
 @fontSize: 1em;
 @fontSizeSmall: .8rem;
@@ -21,7 +23,7 @@ html, body {
 }
 
 body {
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: @fontDefault;
 	font-size: 16px;
 	line-height: 1.5;
 	font-weight: 300;
@@ -47,9 +49,12 @@ a:visited {
 	color: #205caa;
 }
 
+strong {
+	font-weight: 400;
+}
+
 .wrap {
 	max-width: 800px;
-	padding: 0 30px;
 	margin: 0 auto;
 }
 
@@ -58,8 +63,11 @@ a:visited {
 }
 
 #header {
-	padding-top: 150px;
-	padding-bottom: 80px;
+	padding: 20px 0;
+
+	@media (min-width: @breakpointSmall) {
+		padding: 40px 0;
+	}
 
 	.logo {
 		position: relative;
@@ -69,6 +77,12 @@ a:visited {
 		background: url(/img/logo.svg) no-repeat;
 		background-size: contain;
 		text-align: left;
+		.transform(scale(.7));
+
+
+		@media(min-width: @breakpointSmall) {
+			.transform(scale(1));
+		}
 
 		.slogan {
 			position: absolute;
@@ -89,24 +103,62 @@ a:visited {
 }
 
 #content {
+	background: white;
+	padding: 70px 0;
+
+	@media (min-width: @breakpointSmall) {
+		padding: 120px 0;
+	}
+
+	.wrap {
+		padding: 0 15px;
+	}
 
 	.address {
 		a {
 			color: @colorFg;
 			text-decoration: none;
 
-			&:hover:not(.glyphicon) {
-				text-decoration: underline;
+			&:hover {
+				text-decoration: none;
 			}
 		}
+
+		.name {
+			@media (min-width: @breakpointSmall) {
+				font-size: 22px;
+			}
+
+			margin-bottom: 40px;
+		}
+
+		.phone, .email {
+			display: block;
+			font-size: 30px;
+			line-height: 1.65;
+
+			@media (min-width: @breakpointSmall) {
+				font-size: 5vw;
+			}
+
+			&:hover .glyphicon {
+				color: @colorLink;
+			}
+		}
+
 		.glyphicon {
-			margin-right: 5px;
+			margin-right: 12px;
+			font-size: 20px;
 		}
 	}
 }
 
 #footer {
-	padding: 150px 0 20px;
+	padding: 15px 0 20px;
+
+	a {
+		color: @colorFgSubtle;
+	}
 
 	.copyright {
 		color: @colorFgSubtle;
